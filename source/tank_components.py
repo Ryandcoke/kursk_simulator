@@ -1,6 +1,6 @@
 class AmmoRack(object):
     """
-    The ammo rack class
+    Contains a number of shells, up to a maximum ammo capacity.
 
     Parameters:
         int ammo_capacity

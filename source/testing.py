@@ -43,11 +43,24 @@ class TestAmmoRack(unittest.TestCase):
         self.assertFalse(self.rack.add("a", 2))
 
     def test_get_shell_count_1(self):
-        self.assertEquals(1, self.rack.get_shell_count())
+        self.assertEqual(1, self.rack.get_shell_count())
 
     def test_get_shell_count_2(self):
         self.rack.add("b")
-        self.assertEquals(2, self.rack.get_shell_count())
+        self.assertEqual(2, self.rack.get_shell_count())
+
+
+class TestTankFactory(unittest.TestCase):
+
+    def test_get_tank_valid(self):
+        tanks.TankFactory.initialize()
+        sherman = tanks.TankFactory.get_tank("Sherman")
+        self.assertEqual(5, sherman.speed)
+
+    def test_get_tank_false(self):
+        tanks.TankFactory.initialize()
+        self.assertFalse(tanks.TankFactory.get_tank(""))
+
 
 if __name__ == '__main__':
     unittest.main()
