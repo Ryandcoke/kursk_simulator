@@ -21,20 +21,21 @@ class Menu(object):
         while current_prompt:
             current_prompt = get_user_input(current_prompt)
 
-class MenuFactor(object):
+
+class MenuFactory(object):
     """
     Creates menus
     """
     @staticmethod
     def get_menu(name):
-
-
+        pass
 
 
 def initialize_main_menu():
     """
     Prompt the user with the main menu options and get user input
     """
+
 
              _  __              _          
             | |/ /             | |         
