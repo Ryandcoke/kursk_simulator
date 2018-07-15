@@ -1,4 +1,4 @@
-from tank_components import AmmoRack 
+from tank_components import AmmoRack
 
 
 class Tank(object):
