@@ -8,3 +8,11 @@ class Shell(object):
         self.coefficient_1 = coefficient_1
         self.coefficient_2 = coefficient_2
         self.damage = damage
+
+
+class ExplosiveShell(Shell):
+    """
+
+    """
+    def __init__(self):
+        pass
