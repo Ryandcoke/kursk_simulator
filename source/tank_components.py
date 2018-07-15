@@ -6,6 +6,10 @@ class AmmoRack(object):
         self.ammo_capacity = ammo_capacity
         self.ammo = ammo
 
+    def __str__(self):
+        return "[ammo capacity]" + str(self.ammo_capacity) + " | ammo: "
+        + str(self.ammo) + "]"
+
     def remove(self, name):
         """
         name  ex:
