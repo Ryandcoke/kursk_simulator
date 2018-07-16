@@ -11,7 +11,7 @@ Table of Contents
     - [Historical Data](#historical-data)
     - [Penetration Regression](#penetration-regression)
 3. [Armour Model](armour-model)
-4. [Armour Overmatch Mechanics](#armour overmatch mechanics)
+4. [Armour Overmatch Mechanics](#armour-overmatch-mechanics)
 3. [Data and References](#data-and-references)
 
 
