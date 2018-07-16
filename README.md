@@ -6,17 +6,12 @@ Kursk Simulator:  1943
 Table of Contents
 -----------------
 1. [Introduction](#introduction)
-
 1. [A Brief History](#a-brief-history)
-
 2. [Weapon Performance](#weapon-performance)
-    - Historical Data
-    - Penetration Regression
-
+    - [Historical Data](#historical-data)
+    - [Penetration Regression](#penetration-regression)
 3. [Armour Model](armour-model)
-
 4. [Armour Overmatch Mechanics](#armour overmatch mechanics)
-
 3. [Data and References](#data-and-references)
 
 
