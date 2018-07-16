@@ -64,3 +64,5 @@ class TestTankFactory(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+else:
+    print("Do not import _test.py from other modules.")

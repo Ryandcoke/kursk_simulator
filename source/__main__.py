@@ -20,4 +20,4 @@ if __name__ == "__main__":
     # main.py must be ran directly to start program
     main()
 else:
-    print("Do not import main.py in other modules")
+    print("Do not import __main__.py from other modules.")
