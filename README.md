@@ -6,23 +6,38 @@ Kursk Simulator:  1943
 Table of Contents
 -----------------
 1. [Introduction](#introduction)
-2. [Methodology](#methodology)
-    - [Research](#research)
+
+1. [A Brief History](#briefhistory)
+
+2. [Weapon Performance](#methodology)
+    - Historical Data
+    - Penetration Regression
+
+3. [Armour Model]()
+
+4. [Armour Overmatch Mechanics](#armour overmatch mechanics)
+
 3. [Data and References](#data)
 
 
 Introduction
 ------------
-**Kursk Simulator: 1943** is a a physics-based tank gunnery simulator built in Python. Using a terminal interface, and [Turtle](https://docs.python.org/3.7/library/turtle.html?highlight=turtle), *Kurst Simulator* models tank and shell characteristics based on real historical data.
+**Kursk Simulator: 1943** is a tank gunnery simulator built in Python. Tank armour layouts and weapon penetration are modeled based on historical data collected by the Allied governments after WWII. *Kursk Simulator* models the overmatch mechanics (the interactions between weapons and armour that determine the penetration, or non-penetration of a shell through armour) of tank gunnery, with a simplified and stylized model based on elementary physics.
 
-Methodology
------------
+A Brief History
+---------------
 
-#### Research
-asdfh
+Weapon Performance
+------------------
+
+Armour Model
+------------
+
+Armour Overmatch Mechanics
+------------
 
 Data and References
-----
+-------------------
 This [Spreadsheet](https://docs.google.com/spreadsheets/d/1NiQnLE_kk3XM-1OGkv_seddDS9wuO5e36ZYBHDHRMOI/edit?usp=sharing)
 contains the collected data that was used to model the attributes of the tanks and their guns in game.
 
