@@ -32,3 +32,5 @@ Weapon penetration data was collected from the book *World War II Ballistics: Ar
 and [MediaFire](http://www.mediafire.com/file/30f70hhd55ipvbp/WWII+Ballistics-+Armor+and+Gunnery.pdf).
 
 > Rexford Bird, L., & Livingston, R. D. (2001). *World War II Ballistics: Armor and Gunnery*. Overmatch Press.
+
+Historical information comes from articles written on [German](http://blog.tiger-tank.com/incombat/german-tanks-kursk/) and [Soviet](http://blog.tiger-tank.com/incombat/soviet-tanks-kursk/) tanks at Kursk by the staff of [The Tank Museum](http://www.tankmuseum.org/home).
