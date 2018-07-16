@@ -15,7 +15,7 @@ class Tank(object):
 
 class TankFactory(object):
     """
-    Creates tank objects
+    Creates tank objects.
     """
     VALID_TANKS = {}
 
@@ -42,5 +42,3 @@ class TankFactory(object):
     def create_sherman():
         # This is just for debugging p
         return Tank(5, AmmoRack(5, {"a": 1}), 5, {"a"}, None)
-
-

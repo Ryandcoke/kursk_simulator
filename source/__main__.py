@@ -4,6 +4,10 @@ from menus import MainMenu
 def main():
     """
     Runs the menu loop until the program exits
+    During the loop, the  user can swap between menus
+        - main
+        - startup
+        - game
     """
     # Start off in the main menu
     current_menu = MainMenu()
@@ -12,4 +16,8 @@ def main():
 
 
 # Initialize the program
-main()
+if __name__ == "__main__":
+    # main.py must be ran directly to start program
+    main()
+else:
+    print("Do not import main.py in other modules")

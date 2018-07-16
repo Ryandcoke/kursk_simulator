@@ -1,12 +1,23 @@
+from enum import Enum
+
+class MenuType(Enum):
+    """
+    Used for MenuFactory, which will probably not be used.
+    """
+    INVALID  = 0
+    MAIN     = 1
+    STARTUP  = 2
+    GAME     = 3
+
 class Menu(object):
     """
     Prompts the user for input.
     Depending on the reponse, the menu will either reprompt or exit
     and return some value based on the response.
     """
-    def __init__(self, main_prompt, valid_responses):
-        self.main_prompt = main_prompt
-        self.valid_responses = valid_responses
+    def __init__(self):
+        self.main_prompt = self.create_prompts()
+        self.valid_responses = self.create_responses()
 
     def start(self):
         """
@@ -39,12 +50,48 @@ class Menu(object):
             pass  # TODO
 
 
+class MainMenu(object):
+    """
+    The main menu that will let the user:
+      - Start a new game
+      - Learn more about the program
+      - Exit the program
+    """
+    class __MainMenu(Menu):
+        """
+        Singleton nested class to prevent multiple instances of MainMenu
+        """
+        def __init__(self):
+            pass
+
+    instance = None
+    def __init__(self):
+        """
+        If Singleton instance not created yet, create it and return it.
+        Else, return the already created instance to avoid duplicate instances.
+        """
+        if not MainMenu.instance:
+            MainMenu.instance = MainMenu.__init__(self)
+
+
 class MenuFactory(object):
     """
-    Creates menus
+    Creates menus.
+
+    Is this excessive?              Yes.
+    Do I care?                      No.
+    Am I going to do it anyways?    Maybe.
+
+    FeelsCorporateJavaDeveloperMan
+
+    Since all menus are Singletons, this may be unneccesary to implement,
+    or extremely easy.
     """
     @staticmethod
     def get_menu(name):
+        """
+        Creates a menu of a specified type.
+        """
         pass
 
 

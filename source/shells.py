@@ -14,6 +14,8 @@ class ShellFactory(object):
     """
     Creates shells
 
+    E X C E S S I V E B O I L E R P L A T E C O D E B O Y S
+
     This is important because AmmoRack does not actually store shells but
     the name of the shell type (String).
     """
