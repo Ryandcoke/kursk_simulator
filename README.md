@@ -1,7 +1,7 @@
 Kursk Simulator:  1943
 =====================
 
-![battleofkursk](http://www.battleofkursk.org/images/Battle%20of%20Kursk%206.jpg)
+![battleofkursk](https://raw.githubusercontent.com/wiki/Ryandcoke/kursk_simulator/title_image.jpg)
 
 Table of Contents
 -----------------
