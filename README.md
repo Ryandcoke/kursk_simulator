@@ -7,15 +7,15 @@ Table of Contents
 -----------------
 1. [Introduction](#introduction)
 
-1. [A Brief History](#briefhistory)
+1. [A Brief History](#a-brief-history)
 
-2. [Weapon Performance](#methodology)
+2. [Weapon Performance](#weapon-performance)
     - Historical Data
     - Penetration Regression
 
 3. [Armour Model]()
 
-4. [Armour Overmatch Mechanics](#armour overmatch mechanics)
+4. [Armour Overmatch Mechanics](#armour-overmatch-mechanics)
 
 3. [Data and References](#data)
 
