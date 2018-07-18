@@ -1,3 +1,11 @@
+"""
+Contains all menu related classes. Menus prompt the user from standard output
+(console) and get the user input from standard input (console).
+Depending on the user response, the response is processed and the appropriate
+actions are taken to navigate through the program.
+"""
+
+
 class Menu(object):
     """
     Prompts the user for input.

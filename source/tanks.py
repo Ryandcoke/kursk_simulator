@@ -1,3 +1,8 @@
+"""
+Contains all tank classes.
+"""
+
+
 from tank_components import AmmoRack
 
 

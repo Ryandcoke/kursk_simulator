@@ -1,3 +1,9 @@
+"""
+Entry point into the program. Run this module to start the program.
+Do not import this from other modules.
+"""
+
+
 from menus import MainMenu
 
 

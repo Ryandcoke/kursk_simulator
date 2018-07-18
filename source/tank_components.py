@@ -1,3 +1,8 @@
+"""
+Contains all components that make up tanks.
+"""
+
+
 class AmmoRack(object):
     """
     Contains a number of shells, up to a maximum ammo capacity.

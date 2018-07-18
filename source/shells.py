@@ -1,3 +1,9 @@
+"""
+Contains all shell classes. Shells are the ammunition used by tanks and are
+contained within ammo racks.
+"""
+
+
 class Shell(object):
     """
     Represents a shell to be fired

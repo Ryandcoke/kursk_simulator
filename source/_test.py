@@ -1,3 +1,9 @@
+"""
+Test suite for the entire program. Run this to execute all test cases.
+Do not import this from other modules.
+"""
+
+
 import unittest
 import tanks
 import tank_components
