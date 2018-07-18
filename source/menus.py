@@ -20,6 +20,7 @@ class Menu(metaclass=Singleton):
 
     def __init__(self):
         self.main_prompt = ""
+        self.prompt = ""
         self.valid_responses = {}
         self.create_prompts()
         self.create_responses()
@@ -32,13 +33,13 @@ class Menu(metaclass=Singleton):
             the next menu to go to
             or None if the program is to be exited
         """
-        current_prompt = self.main_prompt
-        while current_prompt:
+        self.prompt = self.main_prompt
+        while self.prompt:
             # returning a None prompt exits the prompt loop and this
             # specific menu.
-            current_prompt = self.get_user_input(current_prompt)
+            self.get_user_input()
 
-    def get_user_input(self, prompt):
+    def get_user_input(self):
         """
         Parameters:
             String prompt:  to the user that is printed to standard output
@@ -48,15 +49,13 @@ class Menu(metaclass=Singleton):
             String prompt:  to specify the next string to prompt to the user
                             or None if the prompt loop is over.
         """
-        response = input(prompt + self.cursor_prompt)
+        response = input(self.prompt + self.cursor_prompt)
         if response in self.valid_responses.keys():
             # Call function value in self.valid_responses dictionary
             self.valid_responses.get(response)()
         else:
             # Prompt use that an invalid response was issued
             self.prompt_invalid_response(response)
-
-        return prompt
 
     def create_prompts(self):
         """
@@ -79,7 +78,8 @@ class Menu(metaclass=Singleton):
         """
         Prompts that the user has issued an invalid response.
         """
-        raise NotImplementedError("Has not been implemented.")
+        message = "Please enter one of the following: " + str(list(self.valid_responses.keys()))
+        self.prompt = self.main_prompt + "\n" + message
 
 
 class MainMenu(Menu):
@@ -124,11 +124,13 @@ class MainMenu(Menu):
 
         def about():
             # TODO
+            message = "TODO: About this program"
+            self.prompt = self.main_prompt + "\n" + message
             print("about")
 
         def quit():
             # TODO
-            print("Bye")
+            print("Bye!")
             exit()
 
         self.valid_responses = {
