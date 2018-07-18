@@ -6,11 +6,16 @@ actions are taken to navigate through the program.
 """
 
 
-class Menu(object):
+from util import Singleton
+
+
+class Menu(metaclass=Singleton):
     """
     Prompts the user for input.
     Depending on the reponse, the menu will either reprompt or exit
     and return some value based on the response.
+
+    This is an abstract singleton class. Do not instantiate.
     """
 
     def __init__(self):
@@ -77,25 +82,17 @@ class Menu(object):
         raise NotImplementedError("Has not been implemented.")
 
 
-class MainMenu(object):
+class MainMenu(Menu):
     """
     The main menu that will let the user:
-      - Start a new game
-      - Learn more about the program
-      - Exit the program
+        - Start a new game
+        - Learn more about the program
+        - Exit the program
     """
 
-    cursor_prompt = "\n> "
+    cursor_prompt = "\n\n> "  # This is appended to the end of every prompt
 
-    class __MainMenu(Menu):
-        """
-        Singleton nested class to prevent multiple instances of MainMenu
-        """
-
-        def __init__(self):
-            Menu.__init__(self)
-
-        def create_prompts(self):
+    def create_prompts(self):
             self.main_prompt = """
                 _  __              _
                | |/ /             | |
@@ -119,17 +116,34 @@ class MainMenu(object):
     1. Start        2. About Kursk Simulator        3. Quit
 """
 
-        def create_responses(self):
-            self.valid_responses["1"] = self.start
-            self.valid_responses["2"] = self.about
-            self.valid_responses["3"] = self.quit
 
-    instance = None
+    def create_responses(self):
+        def start():
+            # TODO
+            print("start")
+
+        def about():
+            # TODO
+            print("about")
+
+        def quit():
+            # TODO
+            print("Bye")
+            exit()
+
+        self.valid_responses = {
+            "1": start,
+            "2": about,
+            "3": quit
+        }
+
+    instance = None  # singletone instance
 
     def __init__(self):
         """
         If Singleton instance not created yet, create it and return it.
         Else, return the already created instance to avoid duplicate instances.
         """
-        if not MainMenu.instance:
-            MainMenu.instance = MainMenu.__init__(self)
+        super().__init__()
+        # if not MainMenu.instance:
+        #     MainMenu.instance = MainMenu.__MainMenu()
