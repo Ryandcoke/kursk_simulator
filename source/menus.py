@@ -215,18 +215,59 @@ m. Return to main menu
             self.prompt = None
             self.next_menu = MainMenu()
 
-        def about_potato():
+        def about_debug():
             self.prompt = self.main_prompt + "\n" + self.about_debug_prompt
 
         self.valid_responses = {
-            "2": about_potato,
+            "2": about_debug,
             "m": go_to_main_menu
         }
 
 
+class GameMenu(Menu):
+    """
+    General game menu.
+
+    Allows gives the option to restart, or return to main menu.
+    """
+
+    def create_responses(self):
+        # TODO
+        # Figure out how children will add to these responses
+        def go_to_main_menu():
+            self.prompt = None
+            self.next_menu = MainMenu()
+
+        def restart():
+            # TODO
+            # this need to set the valid locations, health and ammo racks
+            # to their default states before the game started.
+            # This means that these values need to be saved before the
+            # game starts so they can be retrieved.
+
+
+class GameMoveMenu(Menu):
+    """
+    In game, the user can choose what direction and how far to move.
+    """
+    def create_prompts(self):
+        self.main_prompt = """
+TODO: Choose where to move.
+"""
+    # TODO: Show the maximum range to move backwards and forwards, depending
+    # on current tank selected.
+
+    def create_responses(self):
+        def go_to_main_menu():
+            self.prompt = None
+            self.next_menu = MainMenu()
+        def go_
+
+
+
 class GameShellMenu(Menu):
     """
-    In game, the user can pick what shell to load for their upcoming shot.
+    In game, the user can choose what shell to load for their upcoming shot.
     """
     def create_prompts(self):
         self.main_prompt = """
@@ -241,8 +282,8 @@ TODO: Choose the next shell to fire.
             self.next_menu = MainMenu()
 
         self.valid_responses = {
-                "m": go_to_main_menu
-                }
+            "m": go_to_main_menu
+        }
 
 
 class GameAimMenu(Menu):
@@ -264,6 +305,11 @@ Choose an angle to fire at (0° - 90°)
             self.next_menu = MainMenu()
 
         def restart():
+            # TODO
+            # this need to set the valid locations, health and ammo racks
+            # to their default states before the game started.
+            # This means that these values need to be saved before the
+            # game starts so they can be retrieved.
             pass
 
         self.valid_responses = {
