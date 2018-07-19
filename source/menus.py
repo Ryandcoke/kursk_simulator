@@ -19,10 +19,13 @@ class Menu(metaclass=Singleton):
     This is an abstract singleton class. Do not instantiate.
     """
 
+    cursor_prompt = "\n\n> "  # This is appended to the end of every prompt
+
     def __init__(self):
         self.main_prompt = ""
         self.prompt = ""
         self.valid_responses = {}
+        self.next_menu = None
         self.create_prompts()
         self.create_responses()
 
@@ -39,6 +42,8 @@ class Menu(metaclass=Singleton):
             # returning a None prompt exits the prompt loop and this
             # specific menu.
             self.get_user_input()
+
+        return self.next_menu
 
     def get_user_input(self):
         """
@@ -91,8 +96,6 @@ class MainMenu(Menu):
         - Exit the program
     """
 
-    cursor_prompt = "\n\n> "  # This is appended to the end of every prompt
-
     def create_prompts(self):
             self.main_prompt = """
                 _  __              _
@@ -122,9 +125,9 @@ class MainMenu(Menu):
 
 
     def create_responses(self):
-        def start():
-            # TODO
-            print("start")
+        def go_to_start_menu():
+            self.prompt = None
+            self.next_menu = StartMenu()
 
         def about():
             self.prompt = self.about_prompt
@@ -134,18 +137,30 @@ class MainMenu(Menu):
             exit()
 
         self.valid_responses = {
-            "1": start,
+            "1": go_to_start_menu,
             "2": about,
             "3": quit
         }
 
-    instance = None  # singletone instance
 
-    def __init__(self):
+class StartMenu(Menu):
+    """
+    The start menu lets the user configure the game to how they want.
+    The user can choose what tanks to use and what ammo they carry.
+    """
+
+    def create_prompts(self):
+        self.main_prompt = """
+        TODO: start menu main prompt
+
+        2. Return to main menu
         """
-        If Singleton instance not created yet, create it and return it.
-        Else, return the already created instance to avoid duplicate instances.
-        """
-        super().__init__()
-        # if not MainMenu.instance:
-        #     MainMenu.instance = MainMenu.__MainMenu()
+
+    def create_responses(self):
+        def go_to_main_menu():
+            self.prompt = None
+            self.next_menu = MainMenu()
+
+        self.valid_responses = {
+            "2": go_to_main_menu
+        }
