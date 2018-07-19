@@ -7,7 +7,7 @@ actions are taken to navigate through the program.
 
 
 from textwrap import fill
-from util import Singleton, print_wrap
+from util import Singleton
 
 
 class Menu(metaclass=Singleton):
@@ -127,7 +127,7 @@ class MainMenu(Menu):
     def create_responses(self):
         def go_to_start_menu():
             self.prompt = None
-            self.next_menu = StartMenu()
+            self.next_menu = SelectTankMenu()
 
         def about():
             self.prompt = self.about_prompt
@@ -143,24 +143,47 @@ class MainMenu(Menu):
         }
 
 
-class StartMenu(Menu):
+class SelectTankMenu(Menu):
     """
-    The start menu lets the user configure the game to how they want.
-    The user can choose what tanks to use and what ammo they carry.
+    The user is prompted with a selection of tanks they can choose from and
+    get information about each tank.
     """
 
     def create_prompts(self):
         self.main_prompt = """
-        TODO: start menu main prompt
+TODO: This is just for debugging stuff.
 
-        2. Return to main menu
-        """
+Select a tank or learn more about it.
+
+Debug tank
+1. Choose
+2. About
+
+m. Return to main menu
+"""
+
+        self.about_debug_prompt = "Debug tank description"
 
     def create_responses(self):
         def go_to_main_menu():
             self.prompt = None
             self.next_menu = MainMenu()
 
+        def about_potato():
+            self.prompt = self.main_prompt + "\n" + self.about_debug_prompt
+
         self.valid_responses = {
-            "2": go_to_main_menu
+            "2": about_potato,
+            "m": go_to_main_menu
         }
+
+class FillAmmoMenu(Menu):
+    """
+    The user can pick what ammo to fill their tank's ammo rack with.
+    """
+
+    def create_prompts(self):
+        pass
+
+    def create_responses(self):
+        pass
