@@ -53,13 +53,15 @@ class Menu(object):
                             without a trailing newline before reading input.
 
         Returns:
-            String prompt:  to specify the next string to prompt to the user
-                            or None if the prompt loop is over.
+            void:           However, it modifies self.prompt which allows
+                            the user to exit the prompt loop in start().
         """
         response = input(self.prompt + self.cursor_prompt)
         if response in self.valid_responses.keys():
             # Call function value in self.valid_responses dictionary
             self.valid_responses.get(response)()
+        elif self.matches_range(response):
+            self.evaluate(response)
         else:
             # Prompt use that an invalid response was issued
             self.prompt_invalid_response(response)
@@ -78,6 +80,34 @@ class Menu(object):
             keys    String      valid responses
             values  Function    what the menu does when those response are
                                 issued
+        """
+        raise NotImplementedError("Has not been implemented.")
+
+    def matches_range(self, response):
+        """
+        If the user response does not match a specifc value in the
+        self.valid_responses dictionary, then check that it is contained
+        within a certain range of values.        
+
+        Parameters:
+            String response
+
+        Returns:
+            boolean True if response matches range
+        """
+        return False
+
+    def evaluate(self, response):
+        """
+        If the user input matches the desired range, then evaluate it here.
+        This is a special case where the user input is not to be evaluated by
+        calling the response function in self.valid_responses.
+
+        Parameters:
+            String response
+
+        Returns:
+            void
         """
         raise NotImplementedError("Has not been implemented.")
 
@@ -192,6 +222,71 @@ m. Return to main menu
             "2": about_potato,
             "m": go_to_main_menu
         }
+
+
+class GameShellMenu(Menu):
+    """
+    In game, the user can pick what shell to load for their upcoming shot.
+    """
+    def create_prompts(self):
+        self.main_prompt = """
+TODO: Choose the next shell to fire.
+        """
+        # TODO: Iterate through tank ammo rack
+
+    def create_responses(self):
+
+        def go_to_main_menu():
+            self.prompt = None
+            self.next_menu = MainMenu()
+
+        self.valid_responses = {
+                "m": go_to_main_menu
+                }
+
+
+class GameAimMenu(Menu):
+    """
+    In game, the user can pick the angle at which they aim their upcoming shot.
+    """
+
+    MIN_ANGLE = 0  # degrees from horizontal
+    MAX_ANGLE = 90
+
+    def create_prompts(self):
+        self.main_prompt = """
+Choose an angle to fire at (0° - 90°)
+        """
+
+    def create_responses(self):
+        def go_to_main_menu():
+            self.prompt = None
+            self.next_menu = MainMenu()
+
+        def restart():
+            pass
+
+        self.valid_responses = {
+            "r": restart,
+            "m": go_to_main_menu
+        }
+
+    def matches_range(self, response):
+        """
+        valid input is any int from 0 to 90
+        """
+        try:
+            return GameAimMenu.MIN_ANGLE <= int(response) <= GameAimMenu.MAX_ANGLE
+        except Exception:
+            return False
+
+    def evaluate(self, response):
+        # TODO: set the angle to int(response)
+        pass
+
+    def prompt_invalid_response(self):
+        message = "Please choose an angle between 0° and 90°, r, or m."
+        self.prompt = self.main_prompt + "\n" + message
 
 
 class FillAmmoMenu(Menu):
