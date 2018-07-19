@@ -6,11 +6,10 @@ actions are taken to navigate through the program.
 """
 
 
-from textwrap import fill
-from util import Singleton
+from util import Singleton, wrap
 
 
-class Menu(metaclass=Singleton):
+class Menu(object):
     """
     Prompts the user for input.
     Depending on the reponse, the menu will either reprompt or exit
@@ -20,6 +19,8 @@ class Menu(metaclass=Singleton):
     """
 
     cursor_prompt = "\n\n> "  # This is appended to the end of every prompt
+
+    __metaclass__ = Singleton
 
     def __init__(self):
         self.main_prompt = ""
@@ -84,7 +85,16 @@ class Menu(metaclass=Singleton):
         """
         Prompts that the user has issued an invalid response.
         """
-        message = "Please enter one of the following: " + str(list(self.valid_responses.keys()))
+        options = ""
+        response_keys = list(self.valid_responses.keys())
+        if len(response_keys) > 1:
+            for i in range(len(response_keys) - 1):
+                options += response_keys[i] + ", "
+            options += "or " + response_keys[len(response_keys) - 1]
+        else:
+            options = response_keys[0]
+        message = "Please choose " + options + "."
+
         self.prompt = self.main_prompt + "\n" + message
 
 
@@ -120,9 +130,15 @@ class MainMenu(Menu):
     1. Start        2. About Kursk Simulator        3. Quit
 """
 
-            about_message = fill("Kursk Simulator: 1943 is a tank gunnery simulator built in Python. Tank armour layouts and weapon penetration are modeled based on historical data collected by the Allied governments after WWII. *Kursk Simulator* models the overmatch mechanics (the interactions between weapons and armour that determine the penetration, or non-penetration of a shell through armour) of tank gunnery, with a simplified and stylized model based on elementary physics.", 79)
+            about_message = wrap("""
+Kursk Simulator: 1943 is a tank gunnery simulator built in Python. Tank armour
+layouts and weapon penetration are modeled based on historical data collected
+by the Allied governments after WWII. Kursk Simulator models the overmatch
+mechanics (the interactions between weapons and armour that determine the
+penetration, or non-penetration of a shell through armour) of tank gunnery,
+with a simplified and stylized model based on elementary physics.
+""")
             self.about_prompt = self.main_prompt + "\n" + about_message
-
 
     def create_responses(self):
         def go_to_start_menu():
@@ -176,6 +192,7 @@ m. Return to main menu
             "2": about_potato,
             "m": go_to_main_menu
         }
+
 
 class FillAmmoMenu(Menu):
     """

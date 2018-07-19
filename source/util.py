@@ -16,6 +16,7 @@ class Singleton(type):
     calls.
     """
     _instances = {}  # stores all singleston object instances
+
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:  # if not created, create and store it
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
@@ -29,3 +30,16 @@ def print_wrap(inText):
     outText = textwrap.fill(inText, 79)
     for line in outText:
         print(line)
+
+
+def wrap(text):
+    """
+    Wraps text to 79 columns
+
+    Paramters:
+        String  text
+
+    Returns:
+        String wrapped_text
+    """
+    return textwrap.fill(text, 79)
