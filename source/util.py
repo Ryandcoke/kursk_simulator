@@ -2,6 +2,10 @@
 Anything to make life easier goes here.
 """
 
+
+import textwrap
+
+
 class Singleton(type):
     """
     Metaclass.
@@ -16,3 +20,12 @@ class Singleton(type):
         if cls not in cls._instances:  # if not created, create and store it
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
         return cls._instances[cls]  # return singleton instance
+
+
+def print_wrap(inText):
+    """
+    Prints a string and hardwraps the text by word at 79 columns.
+    """
+    outText = textwrap.fill(inText, 79)
+    for line in outText:
+        print(line)

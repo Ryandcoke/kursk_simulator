@@ -6,7 +6,8 @@ actions are taken to navigate through the program.
 """
 
 
-from util import Singleton
+from textwrap import fill
+from util import Singleton, print_wrap
 
 
 class Menu(metaclass=Singleton):
@@ -116,6 +117,9 @@ class MainMenu(Menu):
     1. Start        2. About Kursk Simulator        3. Quit
 """
 
+            about_message = fill("Kursk Simulator: 1943 is a tank gunnery simulator built in Python. Tank armour layouts and weapon penetration are modeled based on historical data collected by the Allied governments after WWII. *Kursk Simulator* models the overmatch mechanics (the interactions between weapons and armour that determine the penetration, or non-penetration of a shell through armour) of tank gunnery, with a simplified and stylized model based on elementary physics.", 79)
+            self.about_prompt = self.main_prompt + "\n" + about_message
+
 
     def create_responses(self):
         def start():
@@ -123,13 +127,9 @@ class MainMenu(Menu):
             print("start")
 
         def about():
-            # TODO
-            message = "TODO: About this program"
-            self.prompt = self.main_prompt + "\n" + message
-            print("about")
+            self.prompt = self.about_prompt
 
         def quit():
-            # TODO
             print("Bye!")
             exit()
 
