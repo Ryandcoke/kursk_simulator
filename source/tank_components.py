@@ -85,3 +85,17 @@ class AmmoRack(object):
             # Otherwise, we decrease the ammo count by 1
             self.ammo[name] = new_count
             return True
+
+
+class Plate(object):
+    """
+    Represents a single linear plate that composes a tank's hitboxes.
+    """
+    def __init__(self, point1, point2, thickness):
+        """
+        Parameters:
+            (x, y)  point1
+            (x, y)  point2
+            int     thickness in milimeters
+        """
+        pass
