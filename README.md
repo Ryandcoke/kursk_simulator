@@ -9,9 +9,9 @@ Table of Contents
 2. [A Brief History](#a-brief-history)
 3. [Weapon Performance](#weapon-performance)
     - [Historical Data](#historical-data)
-    - [Penetration Regression](#penetration-regression)
-4. [Armour Model](armour-model)
-5. [Armour Overmatch Mechanics](#armour-overmatch-mechanics)
+    - [Penetration Functions](#penetration-regression)
+4. [Armor Model](armour-model)
+5. [Armor Overmatch Mechanics](#armour-overmatch-mechanics)
 6. [Data and References](#data-and-references)
 
 
@@ -25,13 +25,26 @@ The Battle of Kursk was the largest tank battle in history (perhaps the Battle o
 
 Weapon Performance
 ------------------
-Weapon performance is based on historical shell penetration data from Rexford Bird and Livingston's book, *World War II Ballistics: Armor and Gunnery*.
+##### Historical Data
+Shell penetration data was obtained from Rexford Bird and Livingston's book, *World War II Ballistics: Armor and Gunnery*. This source provides normalized penetration tables for different shells against RHA, at a perpendicular strike angle, with a 50% success rate. The data tables give millimeters of penetration at different ranges.
 
-Armour Models
+##### Penetration Functions
+In order to map the discrete penetration data onto a continuous function, we estimate each shell's penetration function. The penetration function for shell *i* takes the following quadratic form:
+
+*P<sub>i</sub>*&nbsp; = &alpha;<sub>*i*</sub> + &beta;<sub>1*i* </sub>*x* + &beta;<sub>2*i* </sub>*x*<sup>2</sup>
+
+P is penetration <br>
+*x* is distance, from the gun to target <br>
+&alpha; is a constant <br>
+&beta;<sub>1</sub> and &beta;<sub>2</sub> are coefficients 
+
+These penetration functions are estimated with a simple multiple regression. Using STATA, we regress penetration on distance and distance squared to estimate &alpha;, &beta;<sub>1</sub> and &beta;<sub>2</sub>.
+
+Armor Models
 ------------
-Tank armor layouts are based on historical data. The simplified models capture the thickness and angle of glacis plates and the gun mantlet. Smaller details such as hatches and ports are not currently modeled.
+Tank 'hitboxes' are a polygon chain which represents the tank in 2D space. Each line segment in the polygon has an associated thickness. These simplified models simulate the thickness and angle of a tank's glacis plates, gun mantlet, and other surfaces. Smaller details such as hatches and ports are not currently modeled.
 
-Armour Overmatch Mechanics
+Armor Overmatch Mechanics
 --------------------------
 If a shell hits armor, it will penetrate if its penetration value is greater than the armor's armor value.
 
