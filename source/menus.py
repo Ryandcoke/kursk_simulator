@@ -327,6 +327,7 @@ Choose an angle to fire at (0° - 90°)
             return False
 
     def evaluate(self, response):
+        degrees = int(response)  # guaranteed int due to matches_range()
         # TODO: set the angle to int(response)
         pass
 

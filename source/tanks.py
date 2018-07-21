@@ -8,9 +8,15 @@ from tank_components import AmmoRack
 
 class Tank(object):
     """
-    The tank class
+    The tank class.
+
+    Tanks should not be instantiated directly by constructor.
+    Use TankFactory to create tanks instead.
+
     """
-    def __init__(self, speed, ammo_rack, ammo_capacity, shell_types, hitbox):
+    def __init__(self, name, description, speed, ammo_rack, ammo_capacity, shell_types, hitbox):
+        self.name = name
+        self.description = description
         self.speed = speed
         self.ammo_rack = ammo_rack
         self.ammo_capacity = ammo_capacity
