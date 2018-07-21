@@ -1,3 +1,9 @@
+"""
+Test suite for the entire program. Run this to execute all test cases.
+Do not import this from other modules.
+"""
+
+
 import unittest
 import tanks
 import tank_components
@@ -64,3 +70,5 @@ class TestTankFactory(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+else:
+    print("Do not import _test.py from other modules.")
