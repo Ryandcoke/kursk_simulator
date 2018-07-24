@@ -5,6 +5,8 @@ Do not import this from other modules.
 
 
 import unittest
+
+from util import time_function, time_class
 import tanks
 import tank_components
 import shells
@@ -58,14 +60,12 @@ class TestAmmoRack(unittest.TestCase):
 
 class TestTankFactory(unittest.TestCase):
 
-    def test_get_tank_valid(self):
-        tanks.TankFactory.initialize()
-        sherman = tanks.TankFactory.get_tank("Sherman")
-        self.assertEqual(5, sherman.speed)
+    # def test_get_tank_valid(self):
+    #     sherman = tanks.TankFactory.get_tank(tanks.Tank.SHERMAN)
+    #     self.assertEqual(5, sherman.speed)
 
-    def test_get_tank_false(self):
-        tanks.TankFactory.initialize()
-        self.assertFalse(tanks.TankFactory.get_tank(""))
+    def test_get_tank_ValueError(self):
+        with self.assertRaises(ValueError): tanks.TankFactory.get_tank("")
 
 
 if __name__ == '__main__':

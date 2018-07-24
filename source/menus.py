@@ -30,6 +30,8 @@ class Menu(object):
         self.create_prompts()
         self.create_responses()
 
+    def __init_subclass__():
+
     def start(self):
         """
         Initialize the menu
@@ -87,7 +89,7 @@ class Menu(object):
         """
         If the user response does not match a specifc value in the
         self.valid_responses dictionary, then check that it is contained
-        within a certain range of values.        
+        within a certain range of values.
 
         Parameters:
             String response
