@@ -36,7 +36,7 @@ class Tank(object):
 
 class TankFactory(object):
     """
-    Creates tank objects.
+    Instantiates Tank instances.
     """
 
     VALID_TANKS = {}
@@ -45,20 +45,17 @@ class TankFactory(object):
     @staticmethod
     def _initialize():
         """
-        Run this before doing anything else with this class. Only needs to be
-        initialized once.
-
         This connects each Tank to its corresponding creation method, which is
         needed for get_tank().
         """
         TankFactory.VALID_TANKS = {
-            Tank.T_34 : TankFactory._create_t34,
-            Tank.KV_1 : TankFactory._create_kv1,
-            Tank.SHERMAN : TankFactory._create_sherman,
-            Tank.PANZER_III : TankFactory._create_panzer3,
-            Tank.PANZER_IV : TankFactory._create_panzer4,
-            Tank.TIGER : TankFactory._create_tiger,
-            Tank.FERDINAND : TankFactory._create_ferdinand
+            Tank.T_34 : TankFactory._get_t34,
+            Tank.KV_1 : TankFactory._get_kv1,
+            Tank.SHERMAN : TankFactory._get_sherman,
+            Tank.PANZER_III : TankFactory._get_panzer3,
+            Tank.PANZER_IV : TankFactory._get_panzer4,
+            Tank.TIGER : TankFactory._get_tiger,
+            Tank.FERDINAND : TankFactory._get_ferdinand
         }
         TankFactory.initialized = True  # Does not need to be initialized again
 
@@ -69,50 +66,50 @@ class TankFactory(object):
         valid tank names.
 
         Parameters:
-            String name
-                of tank wanted to retreive
+            String  name:   of tank wanted to retreive.
+                            Ex. Tank.SHERMAN, Tank.TIGER
         Returns:
-            a tank of specified tank name
+            Tank    tank:   of specified tank name
         """
         if not TankFactory.initialized:  # Check if initalized first
             TankFactory._initialize()
 
         if name in TankFactory.VALID_TANKS.keys():
-            return TankFactory.VALID_TANKS[name]()  # debug
+            return TankFactory.VALID_TANKS[name]()
         else:
             raise ValueError("Invalid tank name.")
 
     @staticmethod
-    def _create_t34():
+    def _get_t34():
         # TODO:
         pass
 
     @staticmethod
-    def _create_kv1():
+    def _get_kv1():
         # TODO:
         pass
 
     @staticmethod
-    def _create_sherman():
+    def _get_sherman():
         # This is just for debugging purposes
         return Tank(5, AmmoRack(5, {"a": 1}), 5, {"a"}, None)
 
     @staticmethod
-    def _create_panzer3():
+    def _get_panzer3():
         # TODO:
         pass
 
     @staticmethod
-    def _create_panzer4():
+    def _get_panzer4():
         # TODO:
         pass
 
     @staticmethod
-    def _create_tiger():
+    def _get_tiger():
         # TODO:
         pass
 
     @staticmethod
-    def _create_ferdinand():
+    def _get_ferdinand():
         # TODO:
         pass

@@ -35,7 +35,7 @@ class Shell(object):
 
 class ShellFactory(object):
     """
-    Creates shells
+    Instantiates Shell instances.
 
     E X C E S S I V E B O I L E R P L A T E C O D E B O Y S
 
@@ -44,7 +44,6 @@ class ShellFactory(object):
     """
 
     VALID_SHELLS = {}
-
     initialized = False
 
     @staticmethod
@@ -61,17 +60,95 @@ class ShellFactory(object):
         """
         if not ShellFactory.initialized:
             ShellFactory._initialize()
-        return ShellFactory.VALID_SHELLS.get(name)
+
+        if name in ShellFactory.VALID_SHELLS.keys():
+            return ShellFactory.VALID_SHELLS[name]()
+        else:
+            raise ValueError("Invalid shell name.")
 
     @staticmethod
-    def _initialize()
+    def _initialize():
         """
         Connects shell names with shell creation methods in VALID_SHELLS dictionary.
         """
-        VALID_SHELLS = {
-
+        ShellFactory.VALID_SHELLS = {
+            Shell.PZGR_39_8_8 : ShellFactory._get_pzgr_39_8_8,
+            Shell.PZGR_40_8_8 : ShellFactory._get_pzgr_40_8_8,
+            Shell.HI_39 : ShellFactory._get_hi_39,
+            Shell.M61 : ShellFactory._get_m61,
+            Shell.M72 : ShellFactory._get_m72,
+            Shell.PZGR_39_5_0 : ShellFactory._get_pzgr_39_5_0,
+            Shell.PZGR_40_5_0 : ShellFactory._get_pzgr_40_5_0,
+            Shell.PZGR_39_7_5 : ShellFactory._get_pzgr_39_7_5,
+            Shell.PZGR_40_7_5 : ShellFactory._get_pzgr_40_7_5,
+            Shell.PZGR_39_42_7_5 : ShellFactory._get_pzgr_39_42_7_5,
+            Shell.PZGR_40_42_7_5 : ShellFactory._get_pzgr_40_42_7_5,
+            Shell.BR_350P : ShellFactory._get_br_350p,
+            Shell.BR_350B : ShellFactory._get_br_350b,
+            Shell.ZIS_5_BR_350P : ShellFactory._get_zis_5_br_350p,
+            Shell.ZIS_5_BR_350B : ShellFactory._get_zis_5_br_350b
         }
         ShellFactory.initialized = True
+
+    @staticmethod
+    def _get_pzgr_39_8_8():
+        pass
+
+    @staticmethod
+    def _get_pzgr_40_8_8():
+        pass
+
+    @staticmethod
+    def _get_hi_39():
+        pass
+
+    @staticmethod
+    def _get_m61():
+        pass
+
+    @staticmethod
+    def _get_m72():
+        pass
+
+    @staticmethod
+    def _get_pzgr_39_5_0():
+        pass
+
+    @staticmethod
+    def _get_pzgr_40_5_0():
+        pass
+
+    @staticmethod
+    def _get_pzgr_39_7_5():
+        pass
+
+    @staticmethod
+    def _get_pzgr_40_7_5():
+        pass
+
+    @staticmethod
+    def _get_pzgr_39_42_7_5():
+        pass
+
+    @staticmethod
+    def _get_pzgr_40_42_7_5():
+        pass
+
+    @staticmethod
+    def _get_br_350p():
+        pass
+
+    @staticmethod
+    def _get_br_350b():
+        pass
+
+    @staticmethod
+    def _get_zis_5_br_350p():
+        pass
+
+    @staticmethod
+    def _get_zis_5_br_350b():
+        pass
 
 class ExplosiveShell(Shell):
     """
