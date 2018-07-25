@@ -51,13 +51,15 @@ class TankFactory(object):
         This connects each Tank to its corresponding creation method, which is
         needed for get_tank().
         """
-        TankFactory.VALID_TANKS[Tank.T_34] = TankFactory._create_t34
-        TankFactory.VALID_TANKS[Tank.KV_1] = TankFactory._create_kv1
-        TankFactory.VALID_TANKS[Tank.SHERMAN] = TankFactory._create_sherman
-        TankFactory.VALID_TANKS[Tank.PANZER_III] = TankFactory._create_panzer3
-        TankFactory.VALID_TANKS[Tank.PANZER_IV] = TankFactory._create_panzer4
-        TankFactory.VALID_TANKS[Tank.TIGER] = TankFactory._create_tiger
-        TankFactory.VALID_TANKS[Tank.FERDINAND] = TankFactory._create_ferdinand
+        TankFactory.VALID_TANKS = {
+            Tank.T_34 : TankFactory._create_t34,
+            Tank.KV_1 : TankFactory._create_kv1,
+            Tank.SHERMAN : TankFactory._create_sherman,
+            Tank.PANZER_III : TankFactory._create_panzer3,
+            Tank.PANZER_IV : TankFactory._create_panzer4,
+            Tank.TIGER : TankFactory._create_tiger,
+            Tank.FERDINAND : TankFactory._create_ferdinand
+        }
         TankFactory.initialized = True  # Does not need to be initialized again
 
     @staticmethod
