@@ -25,6 +25,11 @@ class ShellFactory(object):
     This is important because AmmoRack does not actually store shells but
     the name of the shell type (String).
     """
+
+    VALID_SHELLS = {}
+
+    initialized = False
+
     @staticmethod
     def get_shell(name):
         """
@@ -37,8 +42,19 @@ class ShellFactory(object):
             Shell   shell:  of specified name
                             or None if invalid name
         """
-        pass
+        if not ShellFactory.initialized:
+            ShellFactory._initialize()
+        return ShellFactory.VALID_SHELLS.get(name)
 
+    @staticmethod
+    def _initialize()
+        """
+        Connects shell names with shell creation methods in VALID_SHELLS dictionary.
+        """
+        VALID_SHELLS = {
+
+        }
+        ShellFactory.initialized = True
 
 class ExplosiveShell(Shell):
     """
