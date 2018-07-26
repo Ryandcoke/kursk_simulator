@@ -247,6 +247,7 @@ class GameMenu(Menu):
             # to their default states before the game started.
             # This means that these values need to be saved before the
             # game starts so they can be retrieved.
+            pass
 
 
 class GameMoveMenu(Menu):
@@ -264,8 +265,6 @@ TODO: Choose where to move.
         def go_to_main_menu():
             self.prompt = None
             self.next_menu = MainMenu()
-        def go_
-
 
 
 class GameShellMenu(Menu):
