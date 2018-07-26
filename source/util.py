@@ -4,6 +4,7 @@ Anything to make life easier goes here.
 
 import textwrap
 from time import time
+from typing import Callable
 
 import types
 
@@ -24,7 +25,7 @@ class Singleton(type):
         return cls._instances[cls]  # return singleton instance
 
 
-def print_wrap(inText):
+def print_wrap(inText: str) -> None:
     """
     Prints a string and hardwraps the text by word at 79 columns.
     """
@@ -33,7 +34,7 @@ def print_wrap(inText):
         print(line)
 
 
-def wrap(text):
+def wrap(text: str) -> str:
     """
     Wraps text to 79 columns
 
@@ -46,7 +47,7 @@ def wrap(text):
     return textwrap.fill(text, 79)
 
 
-def time_function(func):
+def time_function(func: Callable) -> Callable:
     """
     Decorator/wrapper function.
 
@@ -69,7 +70,7 @@ def time_function(func):
     return timed_func  # the input function is now wrapped to time
 
 
-def time_class(cls):
+def time_class(cls: object) -> object:  # TODO class static type
     """
     Decorate/wrapper function.
 

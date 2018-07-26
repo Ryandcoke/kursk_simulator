@@ -16,7 +16,7 @@ class AmmoRack(object):
             int value
                 count of shell
     """
-    def __init__(self, ammo_capacity, ammo):
+    def __init__(self, ammo_capacity: int, ammo: dict):
         self.ammo_capacity = ammo_capacity
         self.ammo = ammo
 
@@ -24,7 +24,7 @@ class AmmoRack(object):
         return "[ammo capacity]" + str(self.ammo_capacity)
         + " | ammo: " + str(self.ammo) + "]"
 
-    def add(self, name, count=1):
+    def add(self, name: str, count=1) -> bool:
         """
         Add a number of shells of a specified type to this ammo rack
 
@@ -47,7 +47,7 @@ class AmmoRack(object):
             self.ammo[name] = contained_count + count
         return True
 
-    def get_shell_count(self):
+    def get_shell_count(self) -> int:
         """
         Returns:
             the total number of shells this ammo rack contains
@@ -57,7 +57,7 @@ class AmmoRack(object):
             total_count += count
         return total_count
 
-    def remove(self, name):
+    def remove(self, name: str) -> bool:
         """
         Remove 1 shell of a specified type from this ammo rack
 

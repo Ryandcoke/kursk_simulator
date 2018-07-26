@@ -47,7 +47,7 @@ class ShellFactory(object):
     initialized = False
 
     @staticmethod
-    def get_shell(name):
+    def get_shell(name: str) -> Shell:
         """
         Creates a shell of a specified name
 
@@ -91,63 +91,63 @@ class ShellFactory(object):
         ShellFactory.initialized = True
 
     @staticmethod
-    def _get_pzgr_39_8_8():
+    def _get_pzgr_39_8_8() -> Shell:
         pass
 
     @staticmethod
-    def _get_pzgr_40_8_8():
+    def _get_pzgr_40_8_8() -> Shell:
         pass
 
     @staticmethod
-    def _get_hi_39():
+    def _get_hi_39() -> Shell:
         pass
 
     @staticmethod
-    def _get_m61():
+    def _get_m61() -> Shell:
         pass
 
     @staticmethod
-    def _get_m72():
+    def _get_m72() -> Shell:
         pass
 
     @staticmethod
-    def _get_pzgr_39_5_0():
+    def _get_pzgr_39_5_0() -> Shell:
         pass
 
     @staticmethod
-    def _get_pzgr_40_5_0():
+    def _get_pzgr_40_5_0() -> Shell:
         pass
 
     @staticmethod
-    def _get_pzgr_39_7_5():
+    def _get_pzgr_39_7_5() -> Shell:
         pass
 
     @staticmethod
-    def _get_pzgr_40_7_5():
+    def _get_pzgr_40_7_5() -> Shell:
         pass
 
     @staticmethod
-    def _get_pzgr_39_42_7_5():
+    def _get_pzgr_39_42_7_5() -> Shell:
         pass
 
     @staticmethod
-    def _get_pzgr_40_42_7_5():
+    def _get_pzgr_40_42_7_5() -> Shell:
         pass
 
     @staticmethod
-    def _get_br_350p():
+    def _get_br_350p() -> Shell:
         pass
 
     @staticmethod
-    def _get_br_350b():
+    def _get_br_350b() -> Shell:
         pass
 
     @staticmethod
-    def _get_zis_5_br_350p():
+    def _get_zis_5_br_350p() -> Shell:
         pass
 
     @staticmethod
-    def _get_zis_5_br_350b():
+    def _get_zis_5_br_350b() -> Shell:
         pass
 
 class ExplosiveShell(Shell):

@@ -31,8 +31,9 @@ class Menu(object):
         self.create_responses()
 
     def __init_subclass__():
+        pass
 
-    def start(self):
+    def start(self) -> Menu:
         """
         Initialize the menu
 
@@ -48,7 +49,7 @@ class Menu(object):
 
         return self.next_menu
 
-    def get_user_input(self):
+    def get_user_input(self) -> None:
         """
         Parameters:
             String prompt:  to the user that is printed to standard output
@@ -68,13 +69,13 @@ class Menu(object):
             # Prompt use that an invalid response was issued
             self.prompt_invalid_response(response)
 
-    def create_prompts(self):
+    def create_prompts(self) -> None:
         """
         This is to be implemented by children classes
         """
         raise NotImplementedError("Has not been implemented.")
 
-    def create_responses(self):
+    def create_responses(self) -> None:
         """
         Creates a dictionary of all valid responses.
 
@@ -85,7 +86,7 @@ class Menu(object):
         """
         raise NotImplementedError("Has not been implemented.")
 
-    def matches_range(self, response):
+    def matches_range(self, response: str) -> bool:
         """
         If the user response does not match a specifc value in the
         self.valid_responses dictionary, then check that it is contained
@@ -99,7 +100,7 @@ class Menu(object):
         """
         return False
 
-    def evaluate(self, response):
+    def evaluate(self, response: str) -> None:
         """
         If the user input matches the desired range, then evaluate it here.
         This is a special case where the user input is not to be evaluated by
@@ -113,7 +114,7 @@ class Menu(object):
         """
         raise NotImplementedError("Has not been implemented.")
 
-    def prompt_invalid_response(self, response):
+    def prompt_invalid_response(self, response: str) -> None:
         """
         Prompts that the user has issued an invalid response.
         """
@@ -138,7 +139,7 @@ class MainMenu(Menu):
         - Exit the program
     """
 
-    def create_prompts(self):
+    def create_prompts(self) -> None:
             self.main_prompt = """
                 _  __              _
                | |/ /             | |
@@ -172,7 +173,7 @@ with a simplified and stylized model based on elementary physics.
 """)
             self.about_prompt = self.main_prompt + "\n" + about_message
 
-    def create_responses(self):
+    def create_responses(self) -> None:
         def go_to_start_menu():
             self.prompt = None
             self.next_menu = SelectTankMenu()
@@ -197,7 +198,7 @@ class SelectTankMenu(Menu):
     get information about each tank.
     """
 
-    def create_prompts(self):
+    def create_prompts(self) -> None:
         self.main_prompt = """
 TODO: This is just for debugging stuff.
 
@@ -212,7 +213,7 @@ m. Return to main menu
 
         self.about_debug_prompt = "Debug tank description"
 
-    def create_responses(self):
+    def create_responses(self) -> None:
         def go_to_main_menu():
             self.prompt = None
             self.next_menu = MainMenu()
@@ -233,7 +234,7 @@ class GameMenu(Menu):
     Allows gives the option to restart, or return to main menu.
     """
 
-    def create_responses(self):
+    def create_responses(self) -> None:
         # TODO
         # Figure out how children will add to these responses
         def go_to_main_menu():
@@ -252,14 +253,14 @@ class GameMoveMenu(Menu):
     """
     In game, the user can choose what direction and how far to move.
     """
-    def create_prompts(self):
+    def create_prompts(self) -> None:
         self.main_prompt = """
 TODO: Choose where to move.
 """
     # TODO: Show the maximum range to move backwards and forwards, depending
     # on current tank selected.
 
-    def create_responses(self):
+    def create_responses(self) -> None:
         def go_to_main_menu():
             self.prompt = None
             self.next_menu = MainMenu()
@@ -271,13 +272,13 @@ class GameShellMenu(Menu):
     """
     In game, the user can choose what shell to load for their upcoming shot.
     """
-    def create_prompts(self):
+    def create_prompts(self) -> None:
         self.main_prompt = """
 TODO: Choose the next shell to fire.
         """
         # TODO: Iterate through tank ammo rack
 
-    def create_responses(self):
+    def create_responses(self) -> None:
 
         def go_to_main_menu():
             self.prompt = None
@@ -296,12 +297,12 @@ class GameAimMenu(Menu):
     MIN_ANGLE = 0  # degrees from horizontal
     MAX_ANGLE = 90
 
-    def create_prompts(self):
+    def create_prompts(self) -> None:
         self.main_prompt = """
 Choose an angle to fire at (0° - 90°)
         """
 
-    def create_responses(self):
+    def create_responses(self) -> None:
         def go_to_main_menu():
             self.prompt = None
             self.next_menu = MainMenu()
@@ -319,7 +320,7 @@ Choose an angle to fire at (0° - 90°)
             "m": go_to_main_menu
         }
 
-    def matches_range(self, response):
+    def matches_range(self, response: str) -> bool:
         """
         valid input is any int from 0 to 90
         """
@@ -328,12 +329,12 @@ Choose an angle to fire at (0° - 90°)
         except Exception:
             return False
 
-    def evaluate(self, response):
+    def evaluate(self, response: str) -> None:
         degrees = int(response)  # guaranteed int due to matches_range()
         # TODO: set the angle to int(response)
         pass
 
-    def prompt_invalid_response(self):
+    def prompt_invalid_response(self) -> None:
         message = "Please choose an angle between 0° and 90°, r, or m."
         self.prompt = self.main_prompt + "\n" + message
 
@@ -343,8 +344,8 @@ class FillAmmoMenu(Menu):
     The user can pick what ammo to fill their tank's ammo rack with.
     """
 
-    def create_prompts(self):
+    def create_prompts(self) -> None:
         pass
 
-    def create_responses(self):
+    def create_responses(self) -> None:
         pass

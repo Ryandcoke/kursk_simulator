@@ -60,7 +60,7 @@ class TankFactory(object):
         TankFactory.initialized = True  # Does not need to be initialized again
 
     @staticmethod
-    def get_tank(name):
+    def get_tank(name: str) -> Tank:
         """
         Get a tank of a specified name. Use Tank.TANK_NAME to choose from all
         valid tank names.
@@ -80,36 +80,36 @@ class TankFactory(object):
             raise ValueError("Invalid tank name.")
 
     @staticmethod
-    def _get_t34():
+    def _get_t34() -> Tank:
         # TODO:
         pass
 
     @staticmethod
-    def _get_kv1():
+    def _get_kv1() -> Tank:
         # TODO:
         pass
 
     @staticmethod
-    def _get_sherman():
+    def _get_sherman() -> Tank:
         # This is just for debugging purposes
         return Tank(5, AmmoRack(5, {"a": 1}), 5, {"a"}, None)
 
     @staticmethod
-    def _get_panzer3():
+    def _get_panzer3() -> Tank:
         # TODO:
         pass
 
     @staticmethod
-    def _get_panzer4():
+    def _get_panzer4() -> Tank:
         # TODO:
         pass
 
     @staticmethod
-    def _get_tiger():
+    def _get_tiger() -> Tank:
         # TODO:
         pass
 
     @staticmethod
-    def _get_ferdinand():
+    def _get_ferdinand() -> Tank:
         # TODO:
         pass
