@@ -31,9 +31,6 @@ class Menu:
         self.create_prompts()
         self.create_responses()
 
-    def __init_subclass__():
-        pass
-
     def start(self) -> 'Menu':
         """
         Initialize the menu
@@ -74,7 +71,7 @@ class Menu:
         """
         This is to be implemented by children classes
         """
-        raise NotImplementedError("Has not been implemented.")
+        raise NotImplementedError("Subclass must implement this method.")
 
     def create_responses(self) -> None:
         """
@@ -85,7 +82,7 @@ class Menu:
             values  Function    what the menu does when those response are
                                 issued
         """
-        raise NotImplementedError("Has not been implemented.")
+        raise NotImplementedError("Subclass must implement this method.")
 
     def matches_range(self, response: str) -> bool:
         """

@@ -1,4 +1,7 @@
 from util import time_class, time_function
+import sys
+
+print(sys.version)
 
 
 @time_function
