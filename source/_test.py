@@ -65,7 +65,8 @@ class TestTankFactory(unittest.TestCase):
     #     self.assertEqual(5, sherman.speed)
 
     def test_get_tank_ValueError(self):
-        with self.assertRaises(ValueError): tanks.TankFactory.get_tank("")
+        with self.assertRaises(ValueError):
+            tanks.TankFactory.get_tank("")
 
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@ contained within ammo racks.
 """
 
 
-class Shell(object):
+class Shell:
     """
     Represents a shell to be fired
     """
@@ -33,7 +33,7 @@ class Shell(object):
         self.damage = damage
 
 
-class ShellFactory(object):
+class ShellFactory:
     """
     Instantiates Shell instances.
 
@@ -69,24 +69,25 @@ class ShellFactory(object):
     @staticmethod
     def _initialize():
         """
-        Connects shell names with shell creation methods in VALID_SHELLS dictionary.
+        Connects shell names with shell creation methods in VALID_SHELLS
+        dictionary.
         """
         ShellFactory.VALID_SHELLS = {
-            Shell.PZGR_39_8_8 : ShellFactory._get_pzgr_39_8_8,
-            Shell.PZGR_40_8_8 : ShellFactory._get_pzgr_40_8_8,
-            Shell.HI_39 : ShellFactory._get_hi_39,
-            Shell.M61 : ShellFactory._get_m61,
-            Shell.M72 : ShellFactory._get_m72,
-            Shell.PZGR_39_5_0 : ShellFactory._get_pzgr_39_5_0,
-            Shell.PZGR_40_5_0 : ShellFactory._get_pzgr_40_5_0,
-            Shell.PZGR_39_7_5 : ShellFactory._get_pzgr_39_7_5,
-            Shell.PZGR_40_7_5 : ShellFactory._get_pzgr_40_7_5,
-            Shell.PZGR_39_42_7_5 : ShellFactory._get_pzgr_39_42_7_5,
-            Shell.PZGR_40_42_7_5 : ShellFactory._get_pzgr_40_42_7_5,
-            Shell.BR_350P : ShellFactory._get_br_350p,
-            Shell.BR_350B : ShellFactory._get_br_350b,
-            Shell.ZIS_5_BR_350P : ShellFactory._get_zis_5_br_350p,
-            Shell.ZIS_5_BR_350B : ShellFactory._get_zis_5_br_350b
+            Shell.PZGR_39_8_8: ShellFactory._get_pzgr_39_8_8,
+            Shell.PZGR_40_8_8: ShellFactory._get_pzgr_40_8_8,
+            Shell.HI_39: ShellFactory._get_hi_39,
+            Shell.M61: ShellFactory._get_m61,
+            Shell.M72: ShellFactory._get_m72,
+            Shell.PZGR_39_5_0: ShellFactory._get_pzgr_39_5_0,
+            Shell.PZGR_40_5_0: ShellFactory._get_pzgr_40_5_0,
+            Shell.PZGR_39_7_5: ShellFactory._get_pzgr_39_7_5,
+            Shell.PZGR_40_7_5: ShellFactory._get_pzgr_40_7_5,
+            Shell.PZGR_39_42_7_5: ShellFactory._get_pzgr_39_42_7_5,
+            Shell.PZGR_40_42_7_5: ShellFactory._get_pzgr_40_42_7_5,
+            Shell.BR_350P: ShellFactory._get_br_350p,
+            Shell.BR_350B: ShellFactory._get_br_350b,
+            Shell.ZIS_5_BR_350P: ShellFactory._get_zis_5_br_350p,
+            Shell.ZIS_5_BR_350B: ShellFactory._get_zis_5_br_350b
         }
         ShellFactory.initialized = True
 
@@ -150,13 +151,13 @@ class ShellFactory(object):
     def _get_zis_5_br_350b() -> Shell:
         pass
 
+
 class ExplosiveShell(Shell):
     """
-
     May or may not be needed. If the "explosive" property has the same effect
     for all explosive shells, then we can simply add a boolean explosive
     attribute to the Shell class.
-
     """
+
     def __init__(self):
         pass

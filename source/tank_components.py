@@ -3,20 +3,24 @@ Contains all components that make up tanks.
 """
 
 
-class AmmoRack(object):
+from typing import Dict
+
+
+class AmmoRack:
     """
     Contains a number of shells, up to a maximum ammo capacity.
 
     Parameters:
-        int ammo_capacity
-            the total number of shells this ammo rack can contain
-        dict ammo
+        int     ammo_capacity:  the total number of shells this ammo rack can
+                                contain
+        dict    ammo:
             String key
                 name of shell
             int value
                 count of shell
     """
-    def __init__(self, ammo_capacity: int, ammo: dict):
+
+    def __init__(self, ammo_capacity: int, ammo: Dict[str, int]):
         self.ammo_capacity = ammo_capacity
         self.ammo = ammo
 
@@ -87,10 +91,11 @@ class AmmoRack(object):
             return True
 
 
-class Plate(object):
+class Plate:
     """
     Represents a single linear plate that composes a tank's hitboxes.
     """
+
     def __init__(self, point1, point2, thickness):
         """
         Parameters:

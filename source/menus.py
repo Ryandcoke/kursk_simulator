@@ -6,10 +6,11 @@ actions are taken to navigate through the program.
 """
 
 
+from typing import Callable, Dict
 from util import Singleton, wrap
 
 
-class Menu(object):
+class Menu:
     """
     Prompts the user for input.
     Depending on the reponse, the menu will either reprompt or exit
@@ -23,9 +24,9 @@ class Menu(object):
     __metaclass__ = Singleton
 
     def __init__(self):
-        self.main_prompt = ""
+        self.main_prompt = str
         self.prompt = ""
-        self.valid_responses = {}
+        self.valid_responses = Dict[str, Callable]
         self.next_menu = None
         self.create_prompts()
         self.create_responses()
@@ -33,7 +34,7 @@ class Menu(object):
     def __init_subclass__():
         pass
 
-    def start(self) -> Menu:
+    def start(self) -> 'Menu':
         """
         Initialize the menu
 
@@ -254,6 +255,7 @@ class GameMoveMenu(Menu):
     """
     In game, the user can choose what direction and how far to move.
     """
+
     def create_prompts(self) -> None:
         self.main_prompt = """
 TODO: Choose where to move.
@@ -271,6 +273,7 @@ class GameShellMenu(Menu):
     """
     In game, the user can choose what shell to load for their upcoming shot.
     """
+
     def create_prompts(self) -> None:
         self.main_prompt = """
 TODO: Choose the next shell to fire.

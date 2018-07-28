@@ -3,18 +3,22 @@ Contains all tank classes.
 """
 
 
+from typing import Callable, Dict
 from tank_components import AmmoRack
 
 
 class Tank(object):
     """
-    The tank class.
+    Represents a tank, which is composed of a collection of plates that form
+    its hitbox, and an ammo rack that is filled with shells. Certain
+    restrictions can be placed on the type of shells the ammo rack can contain.
+    Tanks can move at specified speed.
 
     Tanks should not be instantiated directly by constructor.
     Use TankFactory to create tanks instead.
-
     """
     # Name constants
+    # Use these names to specify to TankFactory on which tank to get
     T_34 = "T-34"
     KV_1 = "KV-1"
     SHERMAN = "Sherman"
@@ -36,10 +40,10 @@ class Tank(object):
 
 class TankFactory(object):
     """
-    Instantiates Tank instances.
+    Instantiates Tank instances. Use get_tank().
     """
 
-    VALID_TANKS = {}
+    VALID_TANKS = Dict[str, Callable]
     initialized = False
 
     @staticmethod
@@ -49,13 +53,13 @@ class TankFactory(object):
         needed for get_tank().
         """
         TankFactory.VALID_TANKS = {
-            Tank.T_34 : TankFactory._get_t34,
-            Tank.KV_1 : TankFactory._get_kv1,
-            Tank.SHERMAN : TankFactory._get_sherman,
-            Tank.PANZER_III : TankFactory._get_panzer3,
-            Tank.PANZER_IV : TankFactory._get_panzer4,
-            Tank.TIGER : TankFactory._get_tiger,
-            Tank.FERDINAND : TankFactory._get_ferdinand
+            Tank.T_34: TankFactory._get_t34,
+            Tank.KV_1: TankFactory._get_kv1,
+            Tank.SHERMAN: TankFactory._get_sherman,
+            Tank.PANZER_III: TankFactory._get_panzer3,
+            Tank.PANZER_IV: TankFactory._get_panzer4,
+            Tank.TIGER: TankFactory._get_tiger,
+            Tank.FERDINAND: TankFactory._get_ferdinand
         }
         TankFactory.initialized = True  # Does not need to be initialized again
 
@@ -66,7 +70,7 @@ class TankFactory(object):
         valid tank names.
 
         Parameters:
-            String  name:   of tank wanted to retreive.
+            str     name:   of tank wanted to retreive.
                             Ex. Tank.SHERMAN, Tank.TIGER
         Returns:
             Tank    tank:   of specified tank name

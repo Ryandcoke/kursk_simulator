@@ -8,6 +8,7 @@ from typing import Callable
 
 import types
 
+
 class Singleton(type):
     """
     Metaclass.
@@ -86,7 +87,7 @@ def time_class(cls: object) -> object:  # TODO class static type
     # print("cls type is: " + str(type(cls)))
     for attr_name in dir(cls):
         attr_value = getattr(cls, attr_name)
-        if isinstance(attr_value, types.FunctionType): # check if attr is a function
+        if isinstance(attr_value, types.FunctionType):  # check if attr is a function
             # print("\tattr_value: " + str(attr_value))
             # apply the function_decorator to your function
             # and replace the original one with your new one
