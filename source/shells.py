@@ -25,7 +25,7 @@ class Shell:
     ZIS_5_BR_350P = "ZiS-5 BR-350P"
     ZIS_5_BR_350B = "ZiS-5 BR-350B"
 
-    def __init__(self, name, constant, coefficient_1, coefficient_2, damage):
+    def __init__(self, name: str, constant: float, coefficient_1: float, coefficient_2: float, damage):
         self.name = name
         self.constant = constant
         self.coefficient_1 = coefficient_1
