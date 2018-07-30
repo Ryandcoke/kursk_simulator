@@ -8,6 +8,7 @@ actions are taken to navigate through the program.
 
 from typing import Callable, Dict
 from util import Singleton, wrap
+from text import Color, Style, color, style, modify
 
 
 class Menu:
@@ -115,15 +116,16 @@ class Menu:
     def prompt_invalid_response(self, response: str) -> None:
         """
         Prompts that the user has issued an invalid response.
+        By default, this lists the possible response options to the user.
         """
         options = ""
         response_keys = list(self.valid_responses.keys())
         if len(response_keys) > 1:
             for i in range(len(response_keys) - 1):
-                options += response_keys[i] + ", "
-            options += "or " + response_keys[len(response_keys) - 1]
+                options += color(response_keys[i], Color.CYAN) + ", "
+            options += "or " + color(response_keys[len(response_keys) - 1], Color.CYAN)
         else:
-            options = response_keys[0]
+            options = color(response_keys[0], Color.CYAN)
         message = "Please choose " + options + "."
 
         self.prompt = self.main_prompt + "\n" + message
@@ -138,7 +140,7 @@ class MainMenu(Menu):
     """
 
     def create_prompts(self) -> None:
-            self.main_prompt = """
+        self.main_prompt = modify("""
                 _  __              _
                | |/ /             | |
                | ' /_   _ _ __ ___| | __
@@ -158,10 +160,14 @@ class MainMenu(Menu):
                                | |  / /   | | ___) |
                                |_| /_/    |_||____/
 
-    1. Start        2. About Kursk Simulator        3. Quit
-"""
+""", Color.YELLOW, Style.BOLD) + \
+        "    " + color("1. ", Color.CYAN) + \
+        modify("Start", Color.YELLOW, Style.UNDERLINE) + "        " + \
+        color("2. ", Color.CYAN) + \
+        modify("About Kursk Simulator", Color.YELLOW, Style.UNDERLINE) + "        " + \
+        color("3. ", Color.CYAN) + modify("Quit", Color.YELLOW, Style.UNDERLINE) + "\n"
 
-            about_message = wrap("""
+        about_message = wrap("""
 Kursk Simulator: 1943 is a tank gunnery simulator built in Python. Tank armour
 layouts and weapon penetration are modeled based on historical data collected
 by the Allied governments after WWII. Kursk Simulator models the overmatch
@@ -169,7 +175,7 @@ mechanics (the interactions between weapons and armour that determine the
 penetration, or non-penetration of a shell through armour) of tank gunnery,
 with a simplified and stylized model based on elementary physics.
 """)
-            self.about_prompt = self.main_prompt + "\n" + about_message
+        self.about_prompt = self.main_prompt + "\n" + about_message
 
     def create_responses(self) -> None:
         def go_to_start_menu():

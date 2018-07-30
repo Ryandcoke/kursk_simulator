@@ -1,4 +1,6 @@
-title = """
+from text import Color, Style, color, style, modify
+
+title_original = """
                 _  __              _
                | |/ /             | |
                | ' /_   _ _ __ ___| | __
@@ -20,5 +22,32 @@ title = """
 
     1. Start        2. About Kursk Simulator        3. Quit
 """
+
+title = modify("""
+                _  __              _
+               | |/ /             | |
+               | ' /_   _ _ __ ___| | __
+               |  <| | | | '__/ __| |/ /
+               | . \\ |_| | |  \\__ \\   <
+               |_|\\_\\__,_|_|  |___/_|\\_\\
+        _____ _                 _       _
+       / ____(_)               | |     | |
+      | (___  _ _ __ ___  _   _| | __ _| |_ ___  _ __
+       \\___ \\| | '_ ` _ \\| | | | |/ _` | __/ _ \\| '__|
+       ____) | | | | | | | |_| | | (_| | || (_) | |
+      |_____/|_|_| |_| |_|\\__,_|_|\\__,_|\\__\\___/|_|
+                               __  ___  _  _  ____
+                              /_ |/ _ \\| || ||___ \\
+                               | | (_) | || |_ __) |
+                               | |\\__, |__   _|__ <
+                               | |  / /   | | ___) |
+                               |_| /_/    |_||____/
+
+""", Color.YELLOW, Style.BOLD) + \
+"    " + color("1. ", Color.CYAN) + \
+modify("Start", Color.YELLOW, Style.UNDERLINE) + "        " + \
+color("2. ", Color.CYAN) + \
+modify("About Kursk Simulator", Color.YELLOW, Style.UNDERLINE) + "        " + \
+color("3. ", Color.CYAN) + modify("Quit", Color.YELLOW, Style.UNDERLINE)
 
 print(title)

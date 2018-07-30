@@ -13,11 +13,8 @@ class AmmoRack:
     Parameters:
         int     ammo_capacity:  the total number of shells this ammo rack can
                                 contain
-        dict    ammo:
-            String key
-                name of shell
-            int value
-                count of shell
+        dict    ammo:           str key:    name of shell
+                                int value:  count of shell
     """
 
     def __init__(self, ammo_capacity: int, ammo: Dict[str, int]):
@@ -25,10 +22,10 @@ class AmmoRack:
         self.ammo = ammo
 
     def __str__(self):
-        return "[ammo capacity]" + str(self.ammo_capacity)
+        return "[ammo capacity: " + str(self.ammo_capacity)
         + " | ammo: " + str(self.ammo) + "]"
 
-    def add(self, name: str, count=1) -> bool:
+    def add(self, name: str, count: int = 1) -> bool:
         """
         Add a number of shells of a specified type to this ammo rack
 

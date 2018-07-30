@@ -3,7 +3,7 @@ Anything to make life easier goes here.
 """
 
 import textwrap
-from time import time
+from timeit import default_timer
 from typing import Callable
 
 import types
@@ -62,9 +62,9 @@ def time_function(func: Callable) -> Callable:
         called
     """
     def timed_func(*args, **kwargs):
-        before = time()
+        before = default_timer()
         return_value = func(*args, **kwargs)
-        after = time()
+        after = default_timer()
         print(func.__name__ + "() elapsed:", after - before, "seconds")
         return return_value
     timed_func.__name__ = func.__name__
@@ -87,7 +87,8 @@ def time_class(cls: object) -> object:  # TODO class static type
     # print("cls type is: " + str(type(cls)))
     for attr_name in dir(cls):
         attr_value = getattr(cls, attr_name)
-        if isinstance(attr_value, types.FunctionType):  # check if attr is a function
+        if isinstance(attr_value, types.FunctionType):
+            # check if attr is a function
             # print("\tattr_value: " + str(attr_value))
             # apply the function_decorator to your function
             # and replace the original one with your new one
