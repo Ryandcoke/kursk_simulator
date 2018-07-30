@@ -122,11 +122,11 @@ class Menu:
         response_keys = list(self.valid_responses.keys())
         if len(response_keys) > 1:
             for i in range(len(response_keys) - 1):
-                options += color(response_keys[i], Color.CYAN) + ", "
-            options += "or " + color(response_keys[len(response_keys) - 1], Color.CYAN)
+                options += color(response_keys[i], Color.CYAN) + color(", ", Color.RED)
+            options += color("or ", Color.RED) + color(response_keys[len(response_keys) - 1], Color.CYAN)
         else:
             options = color(response_keys[0], Color.CYAN)
-        message = "Please choose " + options + "."
+        message = color("Please choose ", Color.RED) + options + color(".", Color.RED)
 
         self.prompt = self.main_prompt + "\n" + message
 
