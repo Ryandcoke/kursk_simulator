@@ -1,7 +1,7 @@
 Kursk Simulator:  1943
 =====================
 
-![battleofkursk](https://raw.githubusercontent.com/wiki/Ryandcoke/kursk_simulator/title_image.jpg)
+![main_menu](https://raw.githubusercontent.com/wiki/Ryandcoke/kursk_simulator/main_menu.PNG)
 
 Table of Contents
 -----------------
@@ -11,7 +11,7 @@ Table of Contents
     - [Historical Data](#historical-data)
     - [Penetration Functions](#penetration-regression)
 4. [Armor Model](armour-model)
-5. [Armor Overmatch Mechanics](#armour-overmatch-mechanics)
+5. [Armor Overmatch Mechanics](#armor-overmatch-mechanics)
 6. [Data and References](#data-and-references)
 
 
@@ -69,7 +69,7 @@ than the armor's armor value.
 
 Shell's penetration value = *f*(shell_type, range_to_target)
 
-Armour's armor value = *g*(thickness, angle_of_incidence)
+Armor's armor value = *g*(thickness, angle_of_incidence)
 
 Penetration ⟺ *f* > *g*
 
