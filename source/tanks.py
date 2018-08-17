@@ -3,9 +3,9 @@ Contains all tank classes.
 """
 
 
-from typing import Callable, Dict
-from tank_components import AmmoRack
-
+from typing import Callable, Dict, List, Set
+from tank_components import AmmoRack, Plate
+from shells import Shell
 
 class Tank(object):
     """
@@ -28,7 +28,9 @@ class Tank(object):
     TIGER = "Tiger"
     FERDINAND = "Ferdinand"
 
-    def __init__(self, name, description, speed, ammo_rack, ammo_capacity, shell_types, hitbox):
+    def __init__(self, name: str, description: str, speed: int,
+                 ammo_rack: AmmoRack, ammo_capacity: int,
+                 shell_types: Set[Shell], hitbox: List[Plate]):
         self.name = name
         self.description = description
         self.speed = speed

@@ -3,7 +3,7 @@ Contains all components that make up tanks.
 """
 
 
-from typing import Dict
+from typing import Dict, Tuple
 
 
 class AmmoRack:
@@ -93,11 +93,14 @@ class Plate:
     Represents a single linear plate that composes a tank's hitboxes.
     """
 
-    def __init__(self, point1, point2, thickness):
+    def __init__(self, point1: Tuple[int, int], point2: Tuple[int, int],
+                 thickness: int):
         """
         Parameters:
             (x, y)  point1
             (x, y)  point2
             int     thickness in milimeters
         """
-        pass
+        self.point1 = point1
+        self.point2 = point2
+        self.thickness = thickness
