@@ -110,7 +110,7 @@ class TankFactory:
         description = "TODO: Sherman tank description"
         speed = 5
         ammo_capacity = 5
-        ammo_rack = AmmoRack(ammo_capacity, {ShellName.M72: 1})
+        ammo_rack = AmmoRack(ammo_capacity)
         shell_types = {
             ShellName.M72
         }

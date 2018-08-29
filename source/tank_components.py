@@ -3,7 +3,6 @@ Contains all components that make up tanks.
 """
 
 
-from enum import Enum
 from typing import Dict, Tuple
 
 
@@ -18,9 +17,9 @@ class AmmoRack:
                                 int value:  count of shell
     """
 
-    def __init__(self, ammo_capacity: int, ammo: Dict[str, int]):
+    def __init__(self, ammo_capacity: int, ammo: Dict[str, int] = None):
         self.ammo_capacity = ammo_capacity
-        self.ammo = ammo
+        self.ammo = {} if not ammo else ammo
 
     def __str__(self):
         return "[ammo capacity: " + str(self.ammo_capacity)

@@ -9,6 +9,9 @@ from typing import Callable, Dict
 
 
 class ShellName(Enum):
+    """
+    Valid shell options for ShellFactory to create.
+    """
     PZGR_39_8_8 = "8.8 cm Pzgr. 39"
     PZGR_40_8_8 = "8.8 cm Pzgr. 40"
     HI_39 = "HI.39"
