@@ -3,6 +3,7 @@ Contains all components that make up tanks.
 """
 
 
+from enum import Enum
 from typing import Dict, Tuple
 
 

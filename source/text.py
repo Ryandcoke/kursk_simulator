@@ -5,6 +5,8 @@ Modify text to be printed.
 
 from enum import Enum
 
+# This resets the color to the default color. This should be used to restore
+# the text color after it has been changed.
 RESET = "\33[0m"
 
 

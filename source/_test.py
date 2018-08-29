@@ -60,9 +60,9 @@ class TestAmmoRack(unittest.TestCase):
 
 class TestTankFactory(unittest.TestCase):
 
-    # def test_get_tank_valid(self):
-    #     sherman = tanks.TankFactory.get_tank(tanks.Tank.SHERMAN)
-    #     self.assertEqual(5, sherman.speed)
+    def test_get_tank_valid(self):
+        tank = tanks.TankFactory.get_tank(tanks.TankName.SHERMAN)
+        self.assertEqual(str(tanks.TankName.SHERMAN), tank.name)
 
     def test_get_tank_ValueError(self):
         with self.assertRaises(ValueError):

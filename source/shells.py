@@ -4,11 +4,11 @@ contained within ammo racks.
 """
 
 
-class Shell:
-    """
-    Represents a shell to be fired
-    """
-    # Name constants
+from enum import Enum
+from typing import Callable, Dict
+
+
+class ShellName(Enum):
     PZGR_39_8_8 = "8.8 cm Pzgr. 39"
     PZGR_40_8_8 = "8.8 cm Pzgr. 40"
     HI_39 = "HI.39"
@@ -25,7 +25,16 @@ class Shell:
     ZIS_5_BR_350P = "ZiS-5 BR-350P"
     ZIS_5_BR_350B = "ZiS-5 BR-350B"
 
-    def __init__(self, name: str, constant: float, coefficient_1: float,
+    def __str__(self):
+        return self.value
+
+
+class Shell:
+    """
+    Represents a shell to be fired
+    """
+
+    def __init__(self, name: ShellName, constant: float, coefficient_1: float,
                  coefficient_2: float, damage: float):
         self.name = name
         self.constant = constant
@@ -44,20 +53,20 @@ class ShellFactory:
     the name of the shell type (String).
     """
 
-    VALID_SHELLS = {}
+    VALID_SHELLS = Dict[ShellName, Callable]
     initialized = False
 
     @staticmethod
-    def get_shell(name: str) -> Shell:
+    def get_shell(name: ShellName) -> Shell:
         """
         Creates a shell of a specified name
 
         Parameters:
-            String  name:   of shell to create
+            ShellName   name:   of shell to create
 
         Returns:
-            Shell   shell:  of specified name
-                            or None if invalid name
+            Shell       shell:  of specified name
+                                or None if invalid name
         """
         if not ShellFactory.initialized:
             ShellFactory._initialize()
@@ -74,21 +83,21 @@ class ShellFactory:
         dictionary.
         """
         ShellFactory.VALID_SHELLS = {
-            Shell.PZGR_39_8_8: ShellFactory._get_pzgr_39_8_8,
-            Shell.PZGR_40_8_8: ShellFactory._get_pzgr_40_8_8,
-            Shell.HI_39: ShellFactory._get_hi_39,
-            Shell.M61: ShellFactory._get_m61,
-            Shell.M72: ShellFactory._get_m72,
-            Shell.PZGR_39_5_0: ShellFactory._get_pzgr_39_5_0,
-            Shell.PZGR_40_5_0: ShellFactory._get_pzgr_40_5_0,
-            Shell.PZGR_39_7_5: ShellFactory._get_pzgr_39_7_5,
-            Shell.PZGR_40_7_5: ShellFactory._get_pzgr_40_7_5,
-            Shell.PZGR_39_42_7_5: ShellFactory._get_pzgr_39_42_7_5,
-            Shell.PZGR_40_42_7_5: ShellFactory._get_pzgr_40_42_7_5,
-            Shell.BR_350P: ShellFactory._get_br_350p,
-            Shell.BR_350B: ShellFactory._get_br_350b,
-            Shell.ZIS_5_BR_350P: ShellFactory._get_zis_5_br_350p,
-            Shell.ZIS_5_BR_350B: ShellFactory._get_zis_5_br_350b
+            ShellName.PZGR_39_8_8: ShellFactory._get_pzgr_39_8_8,
+            ShellName.PZGR_40_8_8: ShellFactory._get_pzgr_40_8_8,
+            ShellName.HI_39: ShellFactory._get_hi_39,
+            ShellName.M61: ShellFactory._get_m61,
+            ShellName.M72: ShellFactory._get_m72,
+            ShellName.PZGR_39_5_0: ShellFactory._get_pzgr_39_5_0,
+            ShellName.PZGR_40_5_0: ShellFactory._get_pzgr_40_5_0,
+            ShellName.PZGR_39_7_5: ShellFactory._get_pzgr_39_7_5,
+            ShellName.PZGR_40_7_5: ShellFactory._get_pzgr_40_7_5,
+            ShellName.PZGR_39_42_7_5: ShellFactory._get_pzgr_39_42_7_5,
+            ShellName.PZGR_40_42_7_5: ShellFactory._get_pzgr_40_42_7_5,
+            ShellName.BR_350P: ShellFactory._get_br_350p,
+            ShellName.BR_350B: ShellFactory._get_br_350b,
+            ShellName.ZIS_5_BR_350P: ShellFactory._get_zis_5_br_350p,
+            ShellName.ZIS_5_BR_350B: ShellFactory._get_zis_5_br_350b
         }
         ShellFactory.initialized = True
 
