@@ -18,6 +18,7 @@ class Menu:
     and return some value based on the response.
 
     This is an abstract singleton class. Do not instantiate.
+    All subclasses must implement create_prompts() and create_responses().
     """
 
     cursor_prompt = "\n\n> "  # This is appended to the end of every prompt
@@ -137,6 +138,8 @@ class MainMenu(Menu):
         - Start a new game
         - Learn more about the program
         - Exit the program
+
+    It is the first menu that the user interacts with when the program starts.
     """
 
     def create_prompts(self) -> None:
